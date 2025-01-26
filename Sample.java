@@ -78,3 +78,57 @@ public class Solution {
         return ptrA;
     }
 }
+
+
+
+For Input: 
+10 20 4 30
+10
+Your Output: 
+20 4 30
+Expected Output: 
+20 4 30
+
+
+
+10 20 4 30
+20
+Your Output: 
+10 4 30
+Expected Output: 
+10 4 30
+
+10 20 4 30
+4
+Your Output: 
+10 20 30
+Expected Output: 
+10 20 30
+
+
+
+    
+/*
+class Node
+{
+    int data ;
+    Node next;
+    Node(int d)
+    {
+        data = d;
+        next = null;
+    }
+}
+*/
+
+// Function to delete a node without any reference to head pointer.
+class Solution {
+    void deleteNode(Node node) {
+        // Your code here
+        if (node.next != null) {
+            node.data = node.next.data;
+            node.next = node.next.next;
+        }
+    }
+}
+
