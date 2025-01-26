@@ -132,3 +132,55 @@ class Solution {
     }
 }
 
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public void reorderList(ListNode head) {
+        
+
+        ListNode fast = head;
+        ListNode slow = head;
+        ListNode temp=null;
+        ListNode prev=null;
+        ListNode curr=null;
+
+        while (fast.next !=null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+
+        fast=slow.next;
+        slow.next = null;
+        slow=head;
+        curr=fast;
+        while(curr != null) {
+            temp=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=temp;
+            
+        }
+        fast = prev;
+        while (fast != null) {
+            
+            temp = slow.next;
+            slow.next=fast;
+            fast=fast.next;
+            slow.next.next=temp;
+            slow=temp;
+        }
+
+    }
+}
+
